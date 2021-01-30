@@ -39,12 +39,12 @@ public class Main {
         }
     }
     public static void main(String[] args) throws Exception {
-	    System.out.println("Spammer v1.0.0 Java by AJ; 1/26/2021\nNOTE: *The author* is not responsible for any actions preformed using this script.\nModes:\ns: prints every line from text file with enters in between\nb: concatenates all lines in text file into one big line and press enter\nm: manual; you enter what you want spammed and how many times you need it spammed");
+	    System.out.println("Spammer v1.0.1 Java by AJ; 1/29/2021\nNOTE: *The author* is not responsible for any actions preformed using this script.\nModes:\ns: prints every line from text file with enters in between\nb: concatenates all lines in text file into one big line and press enter\nm: manual; you enter what you want spammed and how many times you need it spammed");
         Scanner inp = new Scanner(System.in);
         inp.useDelimiter("\n");
         System.out.print("Enter mode: ");
         String mode = inp.nextLine();
-        System.out.print("Enter buffer time (seconds) between lines: ");
+        System.out.print("Time between enter-presses (in seconds): ");
         float buffer = inp.nextFloat();
         int buf = round(buffer*100);
         if (mode.equals("s") || mode.equals("b")) {

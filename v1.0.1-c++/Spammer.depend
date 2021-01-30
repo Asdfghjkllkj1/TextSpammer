@@ -8,3 +8,13 @@
 	<vector>
 	<map>
 
+1611975188 source:c:\all files\coding\c++\programs and projects\spammer\v1.0.0-c++\main.cpp
+	<iostream>
+	<iostream>
+	<fstream>
+	<sstream>
+	<windows.h>
+	<vector>
+	<map>
+	<limits>
+

@@ -11,24 +11,12 @@
 #include <vector>
 
 #include <map>
+
+#include <limits>
 using namespace std;
 
 map<char,int> charHex;
 int offset;
-
-void pChar(INPUT ip,char ch)
-{
-	ip.type = INPUT_KEYBOARD;
-    ip.ki.wScan = 0; // hardware scan code for key
-    ip.ki.time = 0;
-    ip.ki.dwExtraInfo = 0;
-	ip.ki.wVk = charHex[ch]; // virtual-key code for the key through charHex map
-	ip.ki.dwFlags = 0; // 0 for key press
-	SendInput(1, &ip, sizeof(INPUT));
-	ip.ki.dwFlags = KEYEVENTF_KEYUP; // KEYEVENTF_KEYUP for key release
-	SendInput(1, &ip, sizeof(INPUT));
-}
-
 
 void spam(vector<string> lines, bool difLine = true, int rep = 1, string line="")
 {
@@ -213,14 +201,23 @@ int main()
 	char mode;
 	string filename;
 	vector<string> out;
-	cout << "Spammer v1.0.0 C++ by AJ; 1/25/2021\nNOTE: *The author* is not responsible for any actions preformed using this script.\nNOTE 2: Special characters are not yet supported\nModes:\ns: prints every line from text file with enters in between\nb: concatenates all lines in text file into one big line and press enter\nm: manual; you enter what you want spammed and how many times you need it spammed\nWhat mode? ";
+	cout << "Spammer v1.0.1 C++ by AJ; 1/29/2021\nNOTE: *The author* is not responsible for any actions preformed using this script.\nNOTE 2: Special characters are not yet supported\nModes:\ns: prints every line from text file with enters in between\nb: concatenates all lines in text file into one big line and press enter\nm: manual; you enter what you want spammed and how many times you need it spammed\nWhat mode? ";
 	cin >> mode;
-	cout << "How much time (sec) between spams? ";
-	cin >> offset;
+	cin.ignore(numeric_limits<streamsize>::max(),'\n');
+	try {
+		cout << "How much time (sec) between spams? ";
+		cin >> offset;
+	}
+	catch (exception){
+		cout << "Invalid type for time. Defaulting to 0.75s. " << endl;
+		offset = 0.75;
+	}
+	cin.ignore(numeric_limits<streamsize>::max(),'\n');
 	offset*=1000;
 	if (mode=='s'||mode=='b') {
 		cout << "What filename (to spam with)? ";
 		cin >> filename;
+		cin.ignore(numeric_limits<streamsize>::max(),'\n');
 		if (parse_txt(filename, out)==0){
 			if (mode=='s') {
 				spam(out);
@@ -239,9 +236,11 @@ int main()
 		string body;
 		cout << "What to spam? ";
 		cin >> body;
+		cin.ignore(numeric_limits<streamsize>::max(),'\n');
 		int rep;
 		cout << "Spam '" << body << "' how many times? ";
 		cin >> rep;
+		cin.ignore(numeric_limits<streamsize>::max(),'\n');
 		vector<string> blank;
 		spam(blank, true, rep, body);
 	}
