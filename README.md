@@ -1,5 +1,6 @@
 # TextSpammer
-Just a quick spammer program that I made for spamming a group chat; may be updated in the future
+Just a quick spammer program that I made for spamming a group chat; may be updated in the future  
+Update: Now I want to try to make a spammer with a bunch of different programming languages
 ## USAGE:
 Run the program (varies depending on programming language), and answer the prompt for the time between spams, the filename, and the mode for the spammer. It will wait for 5 seconds before commencing spamming.
 ### Modes: 
