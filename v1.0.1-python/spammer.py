@@ -41,7 +41,7 @@ def main():
             print(s(open(n, 'r+').readlines(), w))
     elif m == 'm':
         cont = input('What to spam? ')
-        t = int(input('Spam "{cont}" how many times?'))
+        t = int(input(f'Spam "{cont}" how many times?'))
         print(s(cont, t))
     else:
         print('Unrecognized command. (Check that you only entered one letter (the name of the mode)?), exiting...')
